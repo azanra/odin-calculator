@@ -2,7 +2,7 @@ let result = 0;
 let number = 0;
 let operator;
 let anotherNumber = 0;
-let displayValue;
+let displayValue = '';
 
 
 function add(number, anotherNumber) {
@@ -39,12 +39,13 @@ function operate(operator, number, anotherNumber) {
 }
 
 function btnClick() {
-    const numBtn = document.querySelectorAll('.numBtn');
-    console.log(numBtn);
-    numBtn.forEach((numberButton) => {
+    const inputBtn = document.querySelectorAll('button');
+    console.log(inputBtn);
+    inputBtn.forEach((numberButton) => {
         numberButton.addEventListener("click", () => {
             console.log(numberButton.innerText);
-            displayValue = numberButton.getAttribute('value');
+            displayValue += numberButton.getAttribute('value');
+            
             console.log(typeof(displayValue));
             
             const displayNum = document.querySelector('.result');
