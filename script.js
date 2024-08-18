@@ -3,6 +3,7 @@ let number = 0;
 let operator;
 let anotherNumber = 0;
 let displayValue = '';
+let tempOperator;
 
 
 function add(number, anotherNumber) {
@@ -38,7 +39,7 @@ function operate(operator, number, anotherNumber) {
     }
 }
 
-function btnClick() {
+function numBtnClick() {
     const inputBtn = document.querySelectorAll('.numBtn');
     console.log(inputBtn);
     inputBtn.forEach((numberButton) => {
@@ -57,6 +58,16 @@ function displayClick(value) {
     console.log(displayValue); 
 }
 
+function operatorBtnClick() {
+    const operatorBtn = document.querySelectorAll('.operaBtn');
+    operatorBtn.forEach((operation) => {
+        operation.addEventListener(("click"), () => {
+            tempOperator = operation.getAttribute('value');
+            if(tempOperator !== '='){
+                operator = tempOperator;
+            }
+        })
+    })
+}
 
-
-btnClick();
+numBtnClick();
