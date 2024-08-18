@@ -39,20 +39,24 @@ function operate(operator, number, anotherNumber) {
 }
 
 function btnClick() {
-    const inputBtn = document.querySelectorAll('button');
+    const inputBtn = document.querySelectorAll('.numBtn');
     console.log(inputBtn);
     inputBtn.forEach((numberButton) => {
         numberButton.addEventListener("click", () => {
             console.log(numberButton.innerText);
             displayValue += numberButton.getAttribute('value');
-            
-            console.log(typeof(displayValue));
-            
-            const displayNum = document.querySelector('.result');
-            displayNum.textContent = displayValue;
-            console.log(displayValue);
+            displayClick(displayValue);
         });
     });
 }
+
+function displayClick(value) { 
+    console.log(typeof(displayValue));
+    const displayNum = document.querySelector('.result');
+    displayNum.textContent = displayValue;
+    console.log(displayValue); 
+}
+
+
 
 btnClick();
