@@ -77,7 +77,14 @@ function operatorBtnClick() {
 function storeToNum(firstNumber) {
     firstNumber = displayNum.textContent;
     console.log(firstNumber);
+    clearTextAndDisplay();
 }
+
+function clearTextAndDisplay() {
+    displayNum.textContent = '';
+    displayValue = '';
+}
+
 
 numBtnClick();
 operatorBtnClick();
