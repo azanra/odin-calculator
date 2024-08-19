@@ -5,6 +5,10 @@ let anotherNumber = 0;
 let displayValue = '';
 let tempOperator;
 
+const inputBtn = document.querySelectorAll('.numBtn');
+const displayNum = document.querySelector('.result');
+const operatorBtn = document.querySelectorAll('.operaBtn');
+
 
 function add(number, anotherNumber) {
     return result = number + anotherNumber;
@@ -40,7 +44,6 @@ function operate(operator, number, anotherNumber) {
 }
 
 function numBtnClick() {
-    const inputBtn = document.querySelectorAll('.numBtn');
     console.log(inputBtn);
     inputBtn.forEach((numberButton) => {
         numberButton.addEventListener("click", () => {
@@ -53,21 +56,28 @@ function numBtnClick() {
 
 function displayClick(value) { 
     console.log(typeof(displayValue));
-    const displayNum = document.querySelector('.result');
     displayNum.textContent = displayValue;
     console.log(displayValue); 
 }
 
 function operatorBtnClick() {
-    const operatorBtn = document.querySelectorAll('.operaBtn');
     operatorBtn.forEach((operation) => {
+        console.log('btn');
         operation.addEventListener(("click"), () => {
             tempOperator = operation.getAttribute('value');
+            console.log(tempOperator);
             if(tempOperator !== '='){
                 operator = tempOperator;
+                storeToNum(number);
             }
         })
     })
 }
 
+function storeToNum(firstNumber) {
+    firstNumber = displayNum.textContent;
+    console.log(firstNumber);
+}
+
 numBtnClick();
+operatorBtnClick();
