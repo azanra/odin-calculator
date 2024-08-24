@@ -15,15 +15,15 @@ function add() {
 }
 
 function substract() {
-    return window.result = window.number + window.anotherNumber;
+    return window.result = window.number - window.anotherNumber;
 }
 
 function multiply() {
-    return window.result = window.number + window.anotherNumber;
+    return window.result = window.number * window.anotherNumber;
 }
 
 function divide() {
-    return window.result = window.number + window.anotherNumber;
+    return window.result = window.number / window.anotherNumber;
 }
 
 function operate() {
