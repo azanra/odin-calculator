@@ -1,7 +1,7 @@
 let result = 0;
-let number = 0;
+let number;
 let operator;
-let anotherNumber = 0;
+let anotherNumber;
 let displayValue = '';
 let tempOperator;
 
@@ -10,44 +10,42 @@ const displayNum = document.querySelector('.result');
 const operatorBtn = document.querySelectorAll('.operaBtn');
 
 
-function add(number, anotherNumber) {
-    return result = number + anotherNumber;
+function add() {
+    return window.result = window.number + window.anotherNumber;
 }
 
-function substract(number, anotherNumber) {
-    return result = number - anotherNumber;
+function substract() {
+    return window.result = window.number + window.anotherNumber;
 }
 
-function multiply(number, anotherNumber) {
-    return result = number * anotherNumber;
+function multiply() {
+    return window.result = window.number + window.anotherNumber;
 }
 
-function divide(number, anotherNumber) {
-    return result = number / anotherNumber;
+function divide() {
+    return window.result = window.number + window.anotherNumber;
 }
 
-function operate(operator, number, anotherNumber) {
-    switch(operator) {
+function operate() {
+    switch(window.operator) {
         case '+':
-            add(number, anotherNumber);
+             add();
             break;
         case '-':
-            substract(number, anotherNumber);
+             substract();
             break;
         case '*':
-            multiply(number, anotherNumber);
+            multiply();
             break;
         case '/':
-            divide(number, anotherNumber);
+            divide();
             break;
     }
 }
 
 function numBtnClick() {
-    console.log(inputBtn);
     inputBtn.forEach((numberButton) => {
         numberButton.addEventListener("click", () => {
-            console.log(numberButton.innerText);
             displayValue += numberButton.getAttribute('value');
             displayClick(displayValue);
         });
@@ -55,29 +53,14 @@ function numBtnClick() {
 }
 
 function displayClick(value) { 
-    console.log(typeof(displayValue));
-    displayNum.textContent = displayValue;
-    console.log(displayValue); 
+    displayNum.textContent = value;
 }
 
-function operatorBtnClick() {
-    operatorBtn.forEach((operation) => {
-        console.log('btn');
-        operation.addEventListener(("click"), () => {
-            tempOperator = operation.getAttribute('value');
-            console.log(tempOperator);
-            if(tempOperator !== '='){
-                operator = tempOperator;
-                storeToNum(number);
-            }
-        })
-    })
-}
-
-function storeToNum(firstNumber) {
-    firstNumber = displayNum.textContent;
-    console.log(firstNumber);
+function storeToNum() {
+    window.number = document.querySelector('.result').textContent;
     clearTextAndDisplay();
+    window.number = Number(window.number);
+    return window.number;
 }
 
 function clearTextAndDisplay() {
@@ -85,6 +68,29 @@ function clearTextAndDisplay() {
     displayValue = '';
 }
 
+function storeToAnotherNum() {
+    window.anotherNumber = document.querySelector('.result').textContent;
+    clearTextAndDisplay();
+    window.anotherNumber = Number(window.anotherNumber);
+    return window.anotherNumber;
+}
+
+function operatorBtnClick() {
+    operatorBtn.forEach((operation) => {
+        operation.addEventListener(("click"), () => {
+            tempOperator = operation.getAttribute('value');
+            if(tempOperator !== '='){
+                window.operator = tempOperator;
+                storeToNum();
+            }
+            else{
+                storeToAnotherNum();
+                operate();
+                displayClick(window.result);
+            }
+        })
+    })
+}
 
 numBtnClick();
 operatorBtnClick();
