@@ -60,6 +60,7 @@ function storeToNum() {
     window.number = document.querySelector('.result').textContent;
     clearTextAndDisplay();
     window.number = Number(window.number);
+    console.log(window.number)
     return window.number;
 }
 
@@ -72,6 +73,7 @@ function storeToAnotherNum() {
     window.anotherNumber = document.querySelector('.result').textContent;
     clearTextAndDisplay();
     window.anotherNumber = Number(window.anotherNumber);
+    console.log(window.anotherNumber);
     return window.anotherNumber;
 }
 
@@ -79,7 +81,16 @@ function operatorBtnClick() {
     operatorBtn.forEach((operation) => {
         operation.addEventListener(("click"), () => {
             tempOperator = operation.getAttribute('value');
-            if(tempOperator !== '='){
+            if(window.operator !== undefined && tempOperator !== "="){
+                storeToAnotherNum();
+                operate();
+                displayClick(window.result);
+                window.operator = tempOperator;
+                storeToNum();
+                displayClick(window.number);
+                console.log(window.number);
+            }
+            else if(tempOperator !== '='){
                 window.operator = tempOperator;
                 storeToNum();
             }
