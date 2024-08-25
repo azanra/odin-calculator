@@ -48,6 +48,7 @@ function numBtnClick() {
         numberButton.addEventListener("click", () => {
             displayValue += numberButton.getAttribute('value');
             displayClick(displayValue);
+            enableBtn();
         });
     });
 }
@@ -81,6 +82,7 @@ function operatorBtnClick() {
     operatorBtn.forEach((operation) => {
         operation.addEventListener(("click"), () => {
             tempOperator = operation.getAttribute('value');
+            disableBtn();
             if(window.operator !== undefined && tempOperator !== "="){
                 storeToAnotherNum();
                 operate();
@@ -99,9 +101,22 @@ function operatorBtnClick() {
                 operate();
                 displayClick(window.result);
                 window.operator = undefined;
+                enableBtn()
             }
         })
     })
+}
+
+function disableBtn() {
+    for(let i = 0; i < operatorBtn.length; i++){
+        operatorBtn[i].disabled = true;
+    }
+}
+
+function enableBtn() {
+    for(let i = 0; i < operatorBtn.length; i++){
+        operatorBtn[i].disabled = false;
+    }
 }
 
 numBtnClick();
