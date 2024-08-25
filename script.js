@@ -98,6 +98,7 @@ function operatorBtnClick() {
                 storeToAnotherNum();
                 operate();
                 displayClick(window.result);
+                window.operator = undefined;
             }
         })
     })
