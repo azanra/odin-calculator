@@ -9,6 +9,13 @@ const inputBtn = document.querySelectorAll('.numBtn');
 const displayNum = document.querySelector('.result');
 const operatorBtn = document.querySelectorAll('.operaBtn');
 const clearBtn = document.querySelector('.resetBtn');
+const decBtn = document.querySelector('.decimalBtn');
+
+function decimalClick() {
+    decBtn.addEventListener("click", () => {
+        decBtn.disabled = true;
+    })
+}
 
 function clickResetBtn() {
     clearBtn.addEventListener("click", () => {
@@ -112,6 +119,7 @@ function storeToAnotherNum() {
 function operatorBtnClick() {
     operatorBtn.forEach((operation) => {
         operation.addEventListener(("click"), () => {
+            decBtn.disabled = false;
             tempOperator = operation.getAttribute('value');
             console.log(tempOperator);
             disableBtn();
@@ -152,5 +160,6 @@ function enableBtn() {
 }
 
 numBtnClick();
+decimalClick();
 operatorBtnClick();
 clickResetBtn();
