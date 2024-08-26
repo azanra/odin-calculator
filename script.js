@@ -12,22 +12,31 @@ const operatorBtn = document.querySelectorAll('.operaBtn');
 
 function add() {
     window.result = window.number + window.anotherNumber;
-    return window.result = window.result.toFixed(2);
+    checkInteger();
 }
 
 function substract() {
     window.result = window.number - window.anotherNumber;
-    return window.result = window.result.toFixed(2);
+    checkInteger();
 }
 
 function multiply() {
     window.result = window.number * window.anotherNumber;
-    return window.result = window.result.toFixed(2);
+   checkInteger();
 }
 
 function divide() {
     window.result = window.number / window.anotherNumber;
-    return window.result = window.result.toFixed(2);
+    checkInteger();
+}
+
+function checkInteger() {
+    if(Number.isInteger(window.result) === true){
+        return window.result;
+    }
+    else{
+        return window.result = window.result.toFixed(2);
+    }
 }
 
 function operate() {
@@ -86,6 +95,7 @@ function operatorBtnClick() {
     operatorBtn.forEach((operation) => {
         operation.addEventListener(("click"), () => {
             tempOperator = operation.getAttribute('value');
+            console.log(tempOperator);
             disableBtn();
             if(window.operator !== undefined && tempOperator !== "="){
                 storeToAnotherNum();
