@@ -8,7 +8,19 @@ let tempOperator;
 const inputBtn = document.querySelectorAll('.numBtn');
 const displayNum = document.querySelector('.result');
 const operatorBtn = document.querySelectorAll('.operaBtn');
+const clearBtn = document.querySelector('.resetBtn');
 
+function clickResetBtn() {
+    clearBtn.addEventListener("click", () => {
+        result = 0;
+        number = undefined;
+        operator = undefined;
+        anotherNumber = undefined;
+        displayValue = '';
+        tempOperator = undefined;
+        displayClick();
+    })
+}
 
 function add() {
     window.result = window.number + window.anotherNumber;
@@ -135,3 +147,4 @@ function enableBtn() {
 
 numBtnClick();
 operatorBtnClick();
+clickResetBtn();
