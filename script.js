@@ -1,4 +1,4 @@
-let result = 0;
+let result;
 let number;
 let operator;
 let anotherNumber;
@@ -61,10 +61,16 @@ function operate() {
             break;
         case '*':
             multiply();
-            break;
+            break;  
         case '/':
-            divide();
-            break;
+            if(window.anotherNumber === 0){
+                window.result = "Unable to divide by 0, Use the clear button!";
+                break;
+            }
+            else{
+                divide();
+                break;
+            }
     }
 }
 
