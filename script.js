@@ -11,19 +11,23 @@ const operatorBtn = document.querySelectorAll('.operaBtn');
 
 
 function add() {
-    return window.result = window.number + window.anotherNumber;
+    window.result = window.number + window.anotherNumber;
+    return window.result = window.result.toFixed(2);
 }
 
 function substract() {
-    return window.result = window.number - window.anotherNumber;
+    window.result = window.number - window.anotherNumber;
+    return window.result = window.result.toFixed(2);
 }
 
 function multiply() {
-    return window.result = window.number * window.anotherNumber;
+    window.result = window.number * window.anotherNumber;
+    return window.result = window.result.toFixed(2);
 }
 
 function divide() {
-    return window.result = window.number / window.anotherNumber;
+    window.result = window.number / window.anotherNumber;
+    return window.result = window.result.toFixed(2);
 }
 
 function operate() {
