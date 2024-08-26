@@ -10,8 +10,25 @@ const displayNum = document.querySelector('.result');
 const operatorBtn = document.querySelectorAll('.operaBtn');
 const clearBtn = document.querySelector('.resetBtn');
 const decBtn = document.querySelector('.decimalBtn');
+const deleteBtn = document.querySelector('.backspaceBtn');
 
-function decimalClick() {
+function deleteButtonClick() {
+    deleteBtn.addEventListener("click", () => {
+        console.log(displayValue);
+        displayValue = displayValue.split("");
+        console.log(displayValue);
+        let deletedDisplayValue = displayValue.pop();    
+        if(deletedDisplayValue === '.'){
+            decBtn.disabled = false;
+        }    
+        console.log(displayValue);
+        displayValue = displayValue.join("");
+        console.log(displayValue);
+         displayClick(displayValue);
+    })
+}
+
+function disabledecimalClick() {
     decBtn.addEventListener("click", () => {
         decBtn.disabled = true;
     })
@@ -85,6 +102,8 @@ function numBtnClick() {
     inputBtn.forEach((numberButton) => {
         numberButton.addEventListener("click", () => {
             displayValue += numberButton.getAttribute('value');
+            console.log(typeof(displayValue));
+            console.log(displayValue);
             displayClick(displayValue);
             enableBtn();
         });
@@ -116,10 +135,14 @@ function storeToAnotherNum() {
     return window.anotherNumber;
 }
 
+function enableDecimalBtn() {
+    decBtn.disabled = false;
+}
+
 function operatorBtnClick() {
     operatorBtn.forEach((operation) => {
         operation.addEventListener(("click"), () => {
-            decBtn.disabled = false;
+            enableDecimalBtn();
             tempOperator = operation.getAttribute('value');
             console.log(tempOperator);
             disableBtn();
@@ -160,6 +183,7 @@ function enableBtn() {
 }
 
 numBtnClick();
-decimalClick();
+disabledecimalClick();
 operatorBtnClick();
 clickResetBtn();
+deleteButtonClick();
