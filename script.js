@@ -28,6 +28,19 @@ function deleteButtonClick() {
     })
 }
 
+function keyboardInput() {
+    displayNum.addEventListener("keypress", (event) => {
+        if(isNaN(event.key)){
+            event.preventDefault()
+        }
+        else{
+            displayValue += event.key;
+            event.preventDefault();
+            displayClick(displayValue);
+        }
+    })
+}
+
 function disabledecimalClick() {
     decBtn.addEventListener("click", () => {
         decBtn.disabled = true;
@@ -42,7 +55,7 @@ function clickResetBtn() {
         anotherNumber = undefined;
         displayValue = '';
         tempOperator = undefined;
-        displayClick();
+        displayClick(displayValue);
     })
 }
 
@@ -110,12 +123,12 @@ function numBtnClick() {
     });
 }
 
-function displayClick(value) { 
-    displayNum.textContent = value;
+function displayClick(valueToDisplay) { 
+    displayNum.value = valueToDisplay;
 }
 
 function storeToNum() {
-    window.number = document.querySelector('.result').textContent;
+    window.number = document.querySelector('.result').value;
     clearTextAndDisplay();
     window.number = Number(window.number);
     console.log(window.number)
@@ -123,12 +136,12 @@ function storeToNum() {
 }
 
 function clearTextAndDisplay() {
-    displayNum.textContent = '';
+    displayNum.value = '';
     displayValue = '';
 }
 
 function storeToAnotherNum() {
-    window.anotherNumber = document.querySelector('.result').textContent;
+    window.anotherNumber = document.querySelector('.result').value;
     clearTextAndDisplay();
     window.anotherNumber = Number(window.anotherNumber);
     console.log(window.anotherNumber);
@@ -187,3 +200,4 @@ disabledecimalClick();
 operatorBtnClick();
 clickResetBtn();
 deleteButtonClick();
+keyboardInput();
