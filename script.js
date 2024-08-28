@@ -73,6 +73,7 @@ function clickResetBtn() {
         displayClick(displayValue);
         enableNegativeBtn();
         enableDecimalBtn();
+        enableBtn();
     })
 }
 
