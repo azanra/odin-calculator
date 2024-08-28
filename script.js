@@ -101,7 +101,7 @@ function operate() {
             break;  
         case '/':
             if(window.anotherNumber === 0){
-                window.result = "Unable to divide by 0, Use the clear button!";
+                window.result = "Error";
                 break;
             }
             else{
