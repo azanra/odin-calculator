@@ -19,7 +19,16 @@ function negativeButtonClick() {
         displayValue.unshift("-");
         displayValue = displayValue.join("");
         displayClick(displayValue);
+        disableNegativeBtn();
     })
+}
+
+function disableNegativeBtn() {
+    negBtn.disabled = true;
+}
+
+function enableNegativeBtn() {
+    negBtn.disabled = false;
 }
 
 function deleteButtonClick() {
@@ -62,6 +71,8 @@ function clickResetBtn() {
         displayValue = '';
         tempOperator = undefined;
         displayClick(displayValue);
+        enableNegativeBtn();
+        enableDecimalBtn();
     })
 }
 
@@ -158,6 +169,7 @@ function operatorBtnClick() {
     operatorBtn.forEach((operation) => {
         operation.addEventListener(("click"), () => {
             enableDecimalBtn();
+            enableNegativeBtn();
             tempOperator = operation.getAttribute('value');
             disableBtn();
             if(window.operator !== undefined && tempOperator !== "="){
