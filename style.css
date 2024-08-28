@@ -8,3 +8,8 @@
     display: flex;
     justify-content: center;
 }
+
+.result {
+    width: 350px;
+    font-size: 50px;
+}
