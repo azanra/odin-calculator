@@ -13,12 +13,14 @@
 .result {
     width: 350px;
     font-size: 50px;
+    border-radius: 5px;
 }
 
 button {
     width: 85px;
     height: 75px;
     font-size: 25px;
+    margin-bottom: 5px;
 }
 
 .number-container {
@@ -27,4 +29,8 @@ button {
 
 .container {
     margin-top: 200px;
+}
+
+.operaBtn {
+    background-color: orange;
 }
