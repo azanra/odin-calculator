@@ -11,19 +11,25 @@ const operatorBtn = document.querySelectorAll('.operaBtn');
 const clearBtn = document.querySelector('.resetBtn');
 const decBtn = document.querySelector('.decimalBtn');
 const deleteBtn = document.querySelector('.backspaceBtn');
+const negBtn = document.querySelector('.negativeBtn');
+
+function negativeButtonClick() {
+    negBtn.addEventListener('click', () => {
+        displayValue = displayValue.split("");
+        displayValue.unshift("-");
+        displayValue = displayValue.join("");
+        displayClick(displayValue);
+    })
+}
 
 function deleteButtonClick() {
     deleteBtn.addEventListener("click", () => {
-        console.log(displayValue);
         displayValue = displayValue.split("");
-        console.log(displayValue);
         let deletedDisplayValue = displayValue.pop();    
         if(deletedDisplayValue === '.'){
             decBtn.disabled = false;
         }    
-        console.log(displayValue);
         displayValue = displayValue.join("");
-        console.log(displayValue);
          displayClick(displayValue);
     })
 }
@@ -115,8 +121,6 @@ function numBtnClick() {
     inputBtn.forEach((numberButton) => {
         numberButton.addEventListener("click", () => {
             displayValue += numberButton.getAttribute('value');
-            console.log(typeof(displayValue));
-            console.log(displayValue);
             displayClick(displayValue);
             enableBtn();
         });
@@ -131,7 +135,6 @@ function storeToNum() {
     window.number = document.querySelector('.result').value;
     clearTextAndDisplay();
     window.number = Number(window.number);
-    console.log(window.number)
     return window.number;
 }
 
@@ -144,7 +147,6 @@ function storeToAnotherNum() {
     window.anotherNumber = document.querySelector('.result').value;
     clearTextAndDisplay();
     window.anotherNumber = Number(window.anotherNumber);
-    console.log(window.anotherNumber);
     return window.anotherNumber;
 }
 
@@ -157,7 +159,6 @@ function operatorBtnClick() {
         operation.addEventListener(("click"), () => {
             enableDecimalBtn();
             tempOperator = operation.getAttribute('value');
-            console.log(tempOperator);
             disableBtn();
             if(window.operator !== undefined && tempOperator !== "="){
                 storeToAnotherNum();
@@ -166,7 +167,6 @@ function operatorBtnClick() {
                 window.operator = tempOperator;
                 storeToNum();
                 displayClick(window.number);
-                console.log(window.number);
             }
             else if(tempOperator !== '='){
                 window.operator = tempOperator;
@@ -201,3 +201,4 @@ operatorBtnClick();
 clickResetBtn();
 deleteButtonClick();
 keyboardInput();
+negativeButtonClick();
