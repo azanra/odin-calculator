@@ -31,6 +31,16 @@ button {
 
 .container {
     margin-top: 200px;
+    background-color: black;
+    width: 375px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
 }
 
 .operaBtn {
